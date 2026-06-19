@@ -42,7 +42,8 @@ object AIService {
 
         try {
             val language = java.util.Locale.getDefault().displayLanguage
-            val prompt = "Explique de forma técnica e curta (máximo 2 linhas) o que a configuração do Android '$key' da tabela '${table.name}' faz. Responda apenas a explicação no idioma: $language."
+//            val prompt = "Explique de forma técnica e curta (máximo 2 linhas) o que a configuração do Android '$key' da tabela '${table.name}' faz. Responda apenas a explicação no idioma: $language."
+            val prompt = "Explain in a brief technical way (maximum 3 lines) what the Android setting '$key' in the '${table.name}' table does, including known settings options. Respond only with the explanation in the language: $language."
             
             return@withContext when (provider) {
                 AIProvider.OPENAI -> callOpenAI(apiKey, prompt)
@@ -159,7 +160,7 @@ object AIService {
         }
         
         // Using gemini-2.5-flash, the current standard for fast and accurate technical explanations
-        val url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=$apiKey"
+        val url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$apiKey"
         val request = Request.Builder()
             .url(url)
             .post(json.toString().toRequestBody(mediaType))
