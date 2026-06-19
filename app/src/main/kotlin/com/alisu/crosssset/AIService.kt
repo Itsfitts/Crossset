@@ -160,7 +160,8 @@ object AIService {
         }
         
         // Using gemini-2.5-flash, the current standard for fast and accurate technical explanations
-        val url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$apiKey"
+//        val url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$apiKey"
+        val url = "https://generativelanguage.googleapis.com/v1beta2/models/gemini-3.5-flash:generateText?key=$apiKey"
         val request = Request.Builder()
             .url(url)
             .post(json.toString().toRequestBody(mediaType))
